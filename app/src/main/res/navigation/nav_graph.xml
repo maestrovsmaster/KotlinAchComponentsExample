@@ -4,7 +4,7 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
             app:startDestination="@id/blankFragment">
 
-    <fragment android:id="@+id/blankFragment" android:name="app.troc.kotlinexample3.BlankFragment"
+    <fragment android:id="@+id/blankFragment" android:name="app.troc.kotlinexample3.main_fragment.BlankFragment"
               android:label="fragment_blank" tools:layout="@layout/fragment_blank">
         <action android:id="@+id/toLogin" app:destination="@id/loginFragment"
                 app:enterAnim="@anim/slide_out_top"
@@ -12,11 +12,11 @@
                 app:popEnterAnim="@anim/slide_out_top"
                 app:popExitAnim="@anim/slide_in_top"
         />
-        <action android:id="@+id/goToUserDetails"
+        <action android:id="@+id/toUserDetails"
                 app:destination="@id/userDetailsFragment"/>
     </fragment>
 
-    <fragment android:id="@+id/loginFragment" android:name="app.troc.kotlinexample3.LoginFragment"
+    <fragment android:id="@+id/loginFragment" android:name="app.troc.kotlinexample3.login.LoginFragment"
               android:label="fragment_login" tools:layout="@layout/fragment_login"/>
     <fragment android:id="@+id/userDetailsFragment" android:name="app.troc.kotlinexample3.user_details.UserDetailsFragment"
               android:label="fragment_user_details" tools:layout="@layout/fragment_user_details"/>

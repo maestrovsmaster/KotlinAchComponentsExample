@@ -1,4 +1,4 @@
-package app.troc.kotlinexample3
+package app.troc.kotlinexample3.login
 
 
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import app.troc.kotlinexample3.R
 import kotlinx.android.synthetic.main.fragment_blank.*
 
 

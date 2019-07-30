@@ -1,20 +1,22 @@
-package app.troc.kotlinexample3
+package app.troc.kotlinexample3.main_fragment
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import app.troc.kotlinexample3.DataProvider
+import app.troc.kotlinexample3.model.User
 
-class UserViewModel : ViewModel() {
+class UsersListViewModel : ViewModel() {
 
     var userList : MutableLiveData<List<User>> = MutableLiveData()
 
-    //инициализируем список и заполняем его данными пользователей
+
     init {
         userList.value = DataProvider.getUsers()
     }
 
     fun getListUsers() = userList
 
-    //для обновления списка передаем второй список пользователей
+
     fun updateListUsers() {
         userList.value = DataProvider.getAnotherUsers()
     }

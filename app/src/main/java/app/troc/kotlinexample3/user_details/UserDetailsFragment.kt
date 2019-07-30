@@ -1,5 +1,6 @@
 package app.troc.kotlinexample3.user_details
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -8,12 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import app.troc.kotlinexample3.R
+import kotlinx.android.synthetic.main.fragment_user_details.*
 
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_NAME = "name"
+private const val ARG_PARAM2 = "param2" // now dont used
 
 /**
  * A simple [Fragment] subclass.
@@ -25,16 +27,20 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class UserDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+
+    private val viewModel by lazy { ViewModelProviders.of(this).get(UserViewModel::class.java) }
+
+
+    private var name: String? = null
+   //private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            name = it.getString(ARG_NAME)
+            //param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -44,6 +50,12 @@ class UserDetailsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user_details, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        nameTV.text = name
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -95,7 +107,7 @@ class UserDetailsFragment : Fragment() {
         fun newInstance(param1: String, param2: String) =
             UserDetailsFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
+                    putString(ARG_NAME, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }

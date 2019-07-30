@@ -1,4 +1,4 @@
-package app.troc.kotlinexample3
+package app.troc.kotlinexample3.model
 
 import android.os.Parcel
 import android.os.Parcelable

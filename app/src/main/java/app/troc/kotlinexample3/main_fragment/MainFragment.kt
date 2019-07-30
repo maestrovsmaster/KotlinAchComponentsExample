@@ -1,4 +1,4 @@
-package app.troc.kotlinexample3
+package app.troc.kotlinexample3.main_fragment
 
 
 import android.arch.lifecycle.Observer
@@ -9,12 +9,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import app.troc.kotlinexample3.DataProvider
+import app.troc.kotlinexample3.R
 import kotlinx.android.synthetic.main.fragment_blank.*
 
 
@@ -29,9 +29,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class BlankFragment : Fragment() {
 
-    //private var adapter: UserAdapter? = null
 
-    private val userViewModel by lazy { ViewModelProviders.of(this).get(UserViewModel::class.java)}
+    private val userViewModel by lazy { ViewModelProviders.of(this).get(UsersListViewModel::class.java)}
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,8 +60,9 @@ class BlankFragment : Fragment() {
 
         Navigation.createNavigateOnClickListener(R.id.toLogin, null)
 
+
         loginButton.setOnClickListener {
-            println("Hello kotlin ")
+
             it.findNavController().navigate(R.id.toLogin)
         }
 
@@ -77,7 +77,7 @@ class BlankFragment : Fragment() {
 
         refreshButton.setOnClickListener {  adapter.refreshData(DataProvider.usersList) }
 
-        //подписываем адаптер на изменения списка
+
         userViewModel.getListUsers().observe(this, Observer {
             it?.let {
                 adapter.refreshData(it)
